@@ -1,0 +1,30 @@
+package com.vivekk.authservice.exception;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+@EqualsAndHashCode(callSuper = true)
+@Data
+@AllArgsConstructor
+public class InvalidTokenException extends RuntimeException{
+
+    private static final long SERIAL_VERSION_UID = 1L;
+
+    private String code;
+    private String message;
+
+    public InvalidTokenException() {
+        this.code = "INVALID_PROCESS";
+        this.message = "Credential creation process is having failures.";
+    }
+
+    public InvalidTokenException(String message) {
+        this.code = "INVALID_TOKEN";
+        this.message = message;
+    }
+
+    public InvalidTokenException(String message, Throwable cause) {
+        super(message,cause);
+    }
+}
